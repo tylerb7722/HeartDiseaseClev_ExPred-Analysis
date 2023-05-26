@@ -8,7 +8,7 @@ library(xgboost)
 
 # File Location of Example Dataset Required to be set
 Clev_HeartD <- read.csv('C:\\Users\\Tyler\\Downloads\\Heart_disease_cleveland_new.csv') # File locatiom for Data
-suppressWarnings({ #supresses warnings
+suppressWarnings({ #suppresses warnings
 set.seed(3573) # Set Seed if you wish to get same results everytime
 sample1 <- sample(c(TRUE,FALSE),nrow(Clev_HeartD),replace=TRUE, prob = c(0.7,0.3))
 train <- Clev_HeartD[sample1, ] #Train supervised learning Partition
