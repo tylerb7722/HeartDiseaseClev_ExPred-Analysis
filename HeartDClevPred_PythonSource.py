@@ -27,10 +27,17 @@ y=df['target']
 
 # Create Supervised Train and Unsupervised Test Partitions
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score, roc_curve
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=.33, random_state=3573)
 
 # Count number 0 and 1 prediction values for Heart Disease, 0 being absent, 1 being present
 y.value_counts()
+
+def plot_roc_curve(true_y,y_predt):
+    fpr, tpr, thresholds = roc_curve(true_y,y_predt)
+    plt.plot(fpr,tpr)
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
 
 
 # %%
@@ -44,6 +51,9 @@ print('Logistic Regression Model Accuracy: {0:0.4f}'.format(accuracy_score(y_tes
 predresult1 = pd.DataFrame({"Actual" : y_test, "Predicted" : pred_y})
 print(predresult1)
 
+plot_roc_curve(y_test,pred_y)
+print(f"Logistic Regression AUC Score: {roc_auc_score(y_test,pred_y)}")
+
 # %%
 
 # Testing Logistic Regression model on example data
@@ -53,6 +63,7 @@ Logmodelprediction1 = logModel.predict(XTestValues1)
 Logmodelprediction2 = logModel.predict(XTestValues2)
 print(Logmodelprediction1)
 print(Logmodelprediction2)
+
 
 # %%
 # LightGBM Model
@@ -71,6 +82,8 @@ LightGBMPred2 = clf.predict(XTestValues2)
 print(LightGBMPred1)
 print(LightGBMPred2)
 
+plot_roc_curve(y_test,y_pred)
+print(f"LightGBM Model AUC Score: {roc_auc_score(y_test,y_pred)}")
 
 # %%
 # Random Forest Model
@@ -99,6 +112,10 @@ print(RandomForestPred1)
 print(RandomForestPred2)
 
 
+plot_roc_curve(y_test,y_pred8)
+print(f"Random Forest AUC Score: {roc_auc_score(y_test,y_pred8)}")
+
+
 # %%
 # ExtraTree Model
 from sklearn.ensemble import ExtraTreesClassifier
@@ -113,6 +130,9 @@ ExtraTreePred2 = clf.predict(XTestValues2)
 
 print(ExtraTreePred1)
 print(ExtraTreePred2)
+
+plot_roc_curve(y_test,y_pred9)
+print(f"ExtraTree AUC Score: {roc_auc_score(y_test,y_pred9)}")
 
 # %%
 # XGBoost Model
@@ -130,6 +150,9 @@ XGBoostPred2 = model.predict(XTestValues2)
 
 print(XGBoostPred1)
 print(XGBoostPred2)
+
+plot_roc_curve(y_test,y_pred1)
+print(f"XGBoost Model AUC Score: {roc_auc_score(y_test,y_pred1)}")
 
 # %%
 # Setup TensorFLow Model
@@ -182,6 +205,9 @@ print("TensorFLow Accuracy:",score*100,"%")
 TensorFlowPred1 = classifier.predict(XTestValues1)
 TensorFlowPred2 = classifier.predict(XTestValues2)
 
+plot_roc_curve(y_test,y_pred)
+print(f"TensorFlow AUC Score: {roc_auc_score(y_test,y_pred)}")
+
 # %%
 # Make predictions with example test values
 print(TensorFlowPred1) 
@@ -215,4 +241,5 @@ RidgeModel1.fit(X_train,y_train)
 accuracy = RidgeModel1.score(X_test,y_test)
 
 print('The Predicted accuracy for the Ridge Model is: {0:0.4f}'.format((accuracy*100)),"%\n")
+
 
