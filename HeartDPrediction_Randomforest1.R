@@ -1,3 +1,5 @@
+# This is just a code/script to make predictions on given information using a Random Forest Model only and returning to predicted value
+
 #Required Packages to run R code
 library(rpart)
 library(randomForest)
