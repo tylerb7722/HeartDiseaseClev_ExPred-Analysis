@@ -14,6 +14,9 @@ sample1 <- sample(c(TRUE,FALSE),nrow(Clev_HeartD),replace=TRUE, prob = c(0.7,0.3
 train <- Clev_HeartD[sample1, ] #Train supervised learning Partition
 test <- Clev_HeartD[!sample1, ] #Test Unsupervised Learning Partition
 
+# Random Forest Model
+HeartDForest <- randomForest(target~., data = train, importance = TRUE)
+
 #Function that takes all info collected from user to make prediction with model
 HeartDProbabilityCalc <- function(age,sex,cp,trestbps,chol,fbs ,restecg,thalach,exang,oldpeak,slope,ca,thal) 
   {
