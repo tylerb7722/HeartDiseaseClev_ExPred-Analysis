@@ -1,7 +1,7 @@
 -------------- #This is the R Markdown Code Source file, open in RStudio if you wish to run the Individual Code Blocks and see the output for each block --------------
 
 ---
-title: "HeartDPred_PreAnalysis"
+title: "HeardDPred_Statistical_Analysis."
 author: "Tyler Boudreau"
 date: "`r Sys.Date()`"
 output: html_document
