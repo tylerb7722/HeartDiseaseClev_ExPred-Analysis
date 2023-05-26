@@ -1,4 +1,4 @@
-# This repository contains multiple R and Python Source Code as well as markdown documents and pdfs that provide the analysis done using the HeartDPredCleavland example Dataset to conduct statistical analysis on, as well as testing different machine learning models and comparing their accuracy on the unsupervised testing partition.
+# This repository contains multiple R Source Code as well as markdown documents and pdfs that provide the analysis done using the HeartDPredCleavland example Dataset to conduct statistical analysis on, as well as testing different machine learning models and comparing their accuracy on the unsupervised testing partition.
 
 If you wish to run this code yourself you must do the following:
 
