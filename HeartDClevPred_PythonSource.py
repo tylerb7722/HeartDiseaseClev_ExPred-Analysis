@@ -25,7 +25,7 @@ X=df.iloc[:,0:13]
 X
 y=df['target']
 
-# Create Supervised Train and Unsupervised Test Partitions
+# Create Train and Test Partitions
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score, roc_curve
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=.33, random_state=3573)
