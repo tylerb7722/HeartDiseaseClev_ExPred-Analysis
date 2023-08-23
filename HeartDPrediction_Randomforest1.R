@@ -11,8 +11,8 @@ Clev_HeartD <- read.csv('C:\\Users\\Tyler\\Downloads\\Heart_disease_cleveland_ne
 suppressWarnings({ #suppresses warnings
 set.seed(3573) # Set Seed if you wish to get same results everytime
 sample1 <- sample(c(TRUE,FALSE),nrow(Clev_HeartD),replace=TRUE, prob = c(0.7,0.3))
-train <- Clev_HeartD[sample1, ] #Train supervised learning Partition
-test <- Clev_HeartD[!sample1, ] #Test Unsupervised Learning Partition
+train <- Clev_HeartD[sample1, ] #Train Partition
+test <- Clev_HeartD[!sample1, ] #Test Partition
 
 # Random Forest Model
 HeartDForest <- randomForest(target~., data = train, importance = TRUE)
